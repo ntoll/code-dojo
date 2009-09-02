@@ -36,7 +36,8 @@ def create_dot_file(edge_list, root_node=None):
     edge_list: a list of the connections (edges in the directed graph) within
     the network. e.g. [[12345, 54321], [12345, 98765]] (using Twitter user ids)
 
-    root_node: the output file without the png extension (optional)
+    root_node: the important "user" node in the graph (optionally adds visual
+    emphasis) 
     """
     # Generate the dot language input - could have used a template language like
     # Cheetah but decided this could be an exercise for the user... using
