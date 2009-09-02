@@ -17,8 +17,8 @@ Use the imported Twitter class thus:
     twitter.users.show(user_id=819606)
     # the results are returned as dictionaries mirroring the json content
 
-Use the CreateGraph(edge_list, filename) function to create a png
-image with Graphviz.
+Use the create_dot_file, create_styled_dot_file, and create_graph functions to 
+generate a png image with Graphviz.
 """
 import subprocess
 from os import execvp
