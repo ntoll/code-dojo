@@ -1,0 +1,65 @@
+Creating a social graph using the twitter API
+=============================================
+
+Aim: 
+===
+
+To bridge Twitter and Graphviz to produce pretty directed graphs of social
+networks.
+
+Requirements:
+============
+
+Graphviz - http://www.graphviz.org/ (for creating the output)
+Python - http://python.org/ (the language of choice)
+NoseTests - http://somethingaboutorange.com/mrl/projects/nose/ (for running the
+test suite)
+ptt (Python Twitter Tools) - http://mike.verdone.ca/twitter/ (Twitter API in
+Python)
+
+Setup:
+=====
+
+Please refer to the documentation for Graphviz and Python for installation
+according to your operating system.
+
+For ptt, assuming you have Python's setuptools installed (if not the see:
+http://peak.telecommunity.com/DevCenter/setuptools) just type:
+
+easy_install twitter
+
+For nose just type:
+
+easy_install nose
+
+That's it!
+
+Usage:
+=====
+
+I've created two files as a starting point:
+
+* dojo.py - imports the appropriate stuff and includes two utility functions:
+
+    1) create_dot_file - to generate the social graph in Graphviz's dot language
+    2) create_graph_file - to output the results from Graphviz
+
+* test_dojo.py - the start of a test suite. You should add your tests here!
+
+Problems to Solve:
+=================
+
+* Given a username, get the user's twitter followers
+* Given a username, discover who they are following
+* Given a user ID grab the user information
+* Build a graph showing followers of a start user
+* Update the existing code to prettify the resulting graph (show username,
+fullname and last tweet [with date] for example)
+* Build a graph showing the followers of a start user that also shows followers
+who follow each other
+* Build a graph of depth n showing who follows who given a certain start user
+* Add a constraint / algorithm for limiting the "breadth" of the graph (for
+users with many followers) 
+* Find a means of weighing a user's "importance" (e.g. number of followers / 
+number of friends) and showing this on the graph (what other ways of showing
+"importance" could be used?)
