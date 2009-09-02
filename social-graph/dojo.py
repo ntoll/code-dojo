@@ -55,10 +55,13 @@ def create_styled_dot_file(user_list, edge_list):
     Generates a representation of the network in Graphviz's dot language with
     additional stylistic enhancements to make it look pretty. 
 
-    node_list: a list of TwitterUser objects that are the nodes in the graph
+    user_list: a dictionary of dictionaries where the key is the twitter
+    username and the referenced dictionary is a collection of attributes to
+    display. e.g. { 'ntoll': {'id': 12345, 'fullname': 'Nicholas Tollervey'}}
 
     edge_list: a list of the connections (edges in the directed graph) within
-    the network. e.g. [[12345, 54321], [12345, 98765]] (using Twitter user ids)
+    the network. e.g. [['ntoll', 'tartley'], ['ntoll', 'voidspace']] (using 
+    Twitter user-names )
     """
      
     NODE = '$id [label=< <table border="0" cellborder="0" cellspacing="0"'\

@@ -39,10 +39,13 @@ Usage:
 
 I've created two files as a starting point:
 
-* dojo.py - imports the appropriate stuff and includes two utility functions:
+* dojo.py - imports the appropriate stuff and includes three utility functions:
 
-    1) create_dot_file - to generate the social graph in Graphviz's dot language
-    2) create_graph_file - to output the results from Graphviz
+    1) create_dot_file - to generate the basic social graph in Graphviz's dot 
+    language
+    2) create_styled_dot_file - to output something prettier looking that
+    create_dot_file
+    3) create_graph_file - to output the results from Graphviz
 
 * test_dojo.py - the start of a test suite. You should add your tests here!
 
