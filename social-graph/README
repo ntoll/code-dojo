@@ -43,8 +43,8 @@ I've created two files as a starting point:
 
     1) create_dot_file - to generate the basic social graph in Graphviz's dot 
     language
-    2) create_styled_dot_file - to output something prettier looking that
-    create_dot_file
+    2) create_styled_dot_file - to generate a prettier looking social graph than
+    create_dot_file does
     3) create_graph_file - to output the results from Graphviz
 
 * test_dojo.py - the start of a test suite. You should add your tests here!
