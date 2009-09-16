@@ -83,6 +83,10 @@ def create_styled_dot_file(user_list, edge_list):
     return graph
 
 def create_graph(dot, filename="network"):
+    """
+    Given a graph definition in Graphviz's dot language (and an optional
+    filename) will generate an image of the graph.
+    """
     proc = subprocess.Popen('dot -Tpng > %s.png' % filename,
                             shell=True,
                             stdin=subprocess.PIPE
