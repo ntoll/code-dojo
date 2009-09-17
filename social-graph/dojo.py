@@ -42,11 +42,11 @@ def create_dot_file(edge_list, root_node=None):
     # Generate the dot language input - could have used a template language like
     # Cheetah but decided this could be an exercise for the user... using
     # Python's built-in template string handling
-    edges = ' '.join(['%d -> %d;'%(src, tgt) for src, tgt in edge_list])
+    edges = ' '.join(['%s -> %s;' % (src, tgt) for src, tgt in edge_list])
     if root_node:
         # Visually identify the important "root" node
-        node_def = 'node [shape = doublecircle]; %d; node [shape = circle];'%root_node
-        graph = 'digraph G { %s %s }'%(node_def, edges)
+        node_def = 'node [shape = doublecircle]; %s; node [shape = circle];'%root_node
+        graph = 'digraph G { %s %s }' % (node_def, edges)
     else:
         graph = 'digraph G { %s }'%edges
     return graph
@@ -101,14 +101,15 @@ def get_list_of_followers(twitter, twitterer):
     return twitter.followers.ids.lpdojo() 
 
 def get_graph_for_twitterer(twitter, twitterer):
-    friend_list = get_list_of_followers(twitter, twitterer)
+    friend_list = get_names_from_ids(twitter, get_list_of_followers(twitter,
+        twitterer))
     base_person = friend_list[0]
     edge_list = [[base_person, friend] for friend in friend_list[1:]]
     
     return create_dot_file(edge_list)
 
 def get_names_from_ids(twitter, ids):
-   return [twitter.users.show(userid=x)['screen_name'] for x in ids]
+   return [twitter.users.show(id=x)['screen_name'] for x in ids]
 
 if __name__ == "__main__":
     twitter = Twitter('lpdojo', 'asdfasdf')
