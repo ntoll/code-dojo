@@ -97,3 +97,12 @@ def create_graph(dot, filename="network"):
 def get_list_of_friends(twitter, twitterer):
 
     return twitter.friends.ids.lpdojo() 
+
+def get_graph_for_twitterer(twitter, twitterer):
+    edge_list = get_list_of_friends(twitter, twitterer)
+    return None
+
+if __name__ == "__main__":
+    twitter = Twitter('lpdojo', 'asdfasdf')
+    twitterer = 'lpdojo'
+
