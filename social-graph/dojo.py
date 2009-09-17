@@ -101,15 +101,23 @@ def get_list_of_followers(twitter, twitterer):
     return twitter.followers.ids.lpdojo() 
 
 def get_graph_for_twitterer(twitter, twitterer):
-    friend_list = get_names_from_ids(twitter, get_list_of_followers(twitter,
-        twitterer))
+    friend_list, user_list = get_names_from_ids(twitter,
+            get_list_of_followers(twitter, twitterer))
     base_person = friend_list[0]
     edge_list = [[base_person, friend] for friend in friend_list[1:]]
     
-    return create_dot_file(edge_list)
+    return create_styled_dot_file(user_list, edge_list)
 
 def get_names_from_ids(twitter, ids):
-   return [twitter.users.show(id=x)['screen_name'] for x in ids]
+   details = {}
+   names = []
+   for tid in ids:
+       d = twitter.users.show(id=tid)
+       names.append(d['screen_name'])
+       details[d['screen_name']] = {'name': d['name'] or d['screen_name'],
+               'followers': d['followers_count'],
+               'location': d['location'] or 'unknown'}
+   return names, details
 
 if __name__ == "__main__":
     twitter = Twitter('lpdojo', 'asdfasdf')
