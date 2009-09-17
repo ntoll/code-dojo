@@ -93,3 +93,7 @@ def create_graph(dot, filename="network"):
                         )
     proc.communicate(dot.encode('utf_8'))
     #execvp('open', ['open', '%s.png'%filename,])
+
+def get_list_of_friends(twitter, twitterer):
+
+    return ('Friends',)
