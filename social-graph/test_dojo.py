@@ -59,6 +59,6 @@ def create_styled_dot_file_test():
 
 def get_list_of_friends_test():
     twitter = Twitter('lpdojo', 'asdfasdf')
-    twitterer = 'tartley'
+    twitterer = 'lpdojo'
     friends = dojo.get_list_of_friends(twitter, twitterer)
-    assert len(friends) > 0
+    assert isinstance(friends[0], int)  

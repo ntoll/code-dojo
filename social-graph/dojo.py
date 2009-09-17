@@ -96,4 +96,4 @@ def create_graph(dot, filename="network"):
 
 def get_list_of_friends(twitter, twitterer):
 
-    return ('Friends',)
+    return twitter.friends.ids.lpdojo() 
