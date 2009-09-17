@@ -62,3 +62,9 @@ def get_list_of_friends_test():
     twitterer = 'lpdojo'
     friends = dojo.get_list_of_friends(twitter, twitterer)
     assert isinstance(friends[0], int)  
+
+def draw_graph_for_twitter_test():
+    
+
+    assert isinstance(dojo.get_graph_for_twitterer(twitterer), basestring)
+
