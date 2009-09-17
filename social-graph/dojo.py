@@ -107,8 +107,9 @@ def get_graph_for_twitterer(twitter, twitterer):
     
     return create_dot_file(edge_list)
 
-def get_follower_names_from_ids(twitter, followers):
-   pass
+def get_names_from_ids(twitter, ids):
+   return [twitter.user.show(userid=x)['screen_name'] for x in ids]
+
 if __name__ == "__main__":
     twitter = Twitter('lpdojo', 'asdfasdf')
     twitterer = 'lpdojo'

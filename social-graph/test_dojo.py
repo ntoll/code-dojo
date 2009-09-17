@@ -73,8 +73,8 @@ def draw_graph_for_twitter_test():
     twitterer = 'lpdojo'
     assert isinstance(dojo.get_graph_for_twitterer(twitter, twitterer), basestring)
     
-def get_list_of_followers_names_test():
+def get_list_of_names_test():
     twitter = Twitter('lpdojo', 'asdfasdf')
     followers = get_list_of_followers()
-    follower_names = dojo.get_follower_names_from_ids(twitter, followers)
+    follower_names = dojo.get_names_from_ids(twitter, followers)
     assert all(isinstance(name, basestring) for name in follower_names)
