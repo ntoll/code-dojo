@@ -92,17 +92,25 @@ def create_graph(dot, filename="network"):
                             stdin=subprocess.PIPE
                         )
     proc.communicate(dot.encode('utf_8'))
-    #execvp('open', ['open', '%s.png'%filename,])
+    execvp('open', ['open', '%s.png'%filename,])
 
 def get_list_of_friends(twitter, twitterer):
-
     return twitter.friends.ids.lpdojo() 
 
+def get_list_of_followers(twitter, twitterer):
+    return twitter.followers.ids.lpdojo() 
+
 def get_graph_for_twitterer(twitter, twitterer):
-    edge_list = get_list_of_friends(twitter, twitterer)
-    return None
+    friend_list = get_list_of_followers(twitter, twitterer)
+    base_person = friend_list[0]
+    edge_list = [[base_person, friend] for friend in friend_list[1:]]
+    
+    return create_dot_file(edge_list)
 
 if __name__ == "__main__":
     twitter = Twitter('lpdojo', 'asdfasdf')
     twitterer = 'lpdojo'
+    dot_string = get_graph_for_twitterer(twitter, twitterer)
+    create_graph(dot_string)
+    
 
