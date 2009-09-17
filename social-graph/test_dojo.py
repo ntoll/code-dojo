@@ -5,6 +5,8 @@ see http://somethingaboutorange.com/mrl/projects/nose/
 """
 import dojo
 
+from twitter.api import Twitter
+
 def create_dot_file_test():
     # A very contrived directed graph as a list...
     edges = [
@@ -53,3 +55,11 @@ def create_styled_dot_file_test():
             ]
     expected = 'digraph G { node [ fontname = "Helvetica" fontsize = 8 shape = "plaintext" ] ntoll [label=< <table border="0" cellborder="0" cellspacing="0" bgcolor="#CCCCCC"> <tr> <td colspan="2" cellpadding="2" align="center" bgcolor="#33CCFF"> <font face="Helvetica Bold">ntoll</font> </td> </tr> <tr> <td align="left" cellpadding="2"><font face="Helvetica Bold">following</font></td> <td align="left" cellpadding="2">53</td> </tr>\n<tr> <td align="left" cellpadding="2"><font face="Helvetica Bold">followers</font></td> <td align="left" cellpadding="2">172</td> </tr>\n<tr> <td align="left" cellpadding="2"><font face="Helvetica Bold">full name</font></td> <td align="left" cellpadding="2">Nicholas Tollervey</td> </tr> </table> >]\nbob [label=< <table border="0" cellborder="0" cellspacing="0" bgcolor="#CCCCCC"> <tr> <td colspan="2" cellpadding="2" align="center" bgcolor="#33CCFF"> <font face="Helvetica Bold">bob</font> </td> </tr> <tr> <td align="left" cellpadding="2"><font face="Helvetica Bold">full name</font></td> <td align="left" cellpadding="2">Bob T.Builder</td> </tr> </table> >]\nfred [label=< <table border="0" cellborder="0" cellspacing="0" bgcolor="#CCCCCC"> <tr> <td colspan="2" cellpadding="2" align="center" bgcolor="#33CCFF"> <font face="Helvetica Bold">fred</font> </td> </tr> <tr> <td align="left" cellpadding="2"><font face="Helvetica Bold">full name</font></td> <td align="left" cellpadding="2">Fred Blogs</td> </tr> </table> >] ntoll -> fred; fred -> ntoll; ntoll -> bob; fred -> bob; }'
     assert expected == dojo.create_styled_dot_file(users, edges)
+
+
+def get_list_of_friends_test():
+    twitter = Twitter('lpdojo', 'asdfasdf')
+    twitterer = 'tartley'
+    friends = get_list_of_friends(twitter, twitterer)
+    assert len(friends) > 0
+
