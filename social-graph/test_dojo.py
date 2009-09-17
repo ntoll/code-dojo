@@ -75,6 +75,6 @@ def draw_graph_for_twitter_test():
     
 def get_list_of_names_test():
     twitter = Twitter('lpdojo', 'asdfasdf')
-    followers = get_list_of_followers()
+    followers = dojo.get_list_of_followers(twitter, 'lpdojo')
     follower_names = dojo.get_names_from_ids(twitter, followers)
     assert all(isinstance(name, basestring) for name in follower_names)
