@@ -9,6 +9,7 @@ class game:
         """
         Please finish
         """
+        print "Do you want to play a game?"
         return "OK", GameBoard()
 
 
@@ -23,4 +24,8 @@ class GameBoard():
             return False
         self.state[index] = mark
         return True
+
+    def __repr__(self):
+        tmp = ''.join(self.state)
+        return tmp[0:3] + "\n" + tmp[3:6] + "\n" + tmp[6:9]
 

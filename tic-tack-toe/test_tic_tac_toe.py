@@ -33,6 +33,9 @@ class TestGameBoard(object):
         assert self.board.state == [ 'X', '_', '_', '_', '_', '_', '_', '_', '_', ]
         assert not status
 
+    def show_board_test(self):
+        assert repr(self.board) == "___\n___\n___"
+
 
 
 def not_yet():
