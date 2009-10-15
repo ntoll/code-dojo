@@ -26,6 +26,15 @@ class TestGameBoard(object):
         self.board.set(0, 0, 'X')
         assert self.board.state == [ 'X', '_', '_', '_', '_', '_', '_', '_', '_', ]
     
+    def set_two_different_numbers_test(self):
+        self.board.set(1, 2, 'X')
+        assert self.board.state == [ '_', '_', '_', '_', '_', '_', '_', 'X', '_', ]
+        
+    def set_two_moves_test(self):
+        self.board.set(1, 0, 'X')
+        self.board.set(0, 2, 'O')
+        assert self.board.state == [ '_', 'X', '_', '_', '_', '_', 'O', '_', '_', ]
+    
 
 def not_yet():
     assert status == 'OK'
