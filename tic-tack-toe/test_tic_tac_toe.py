@@ -36,6 +36,24 @@ class TestGameBoard(object):
     def show_board_test(self):
         assert repr(self.board) == "___\n___\n___"
 
+class TestGame(object):
+
+    def setup(self):
+        self.game = tic_tac_toe.Game()
+
+    def test_new_game_has_empty_board(self):
+        assert self.game.show_board() == """\
+___
+___
+___"""
+
+    def test_1st_move_is_X_test(self):
+        self.game.take_turn(0,0)
+        assert self.game.show_board() == """\
+X__
+___
+___"""
+
 
 
 def not_yet():

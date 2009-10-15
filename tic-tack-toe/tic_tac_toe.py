@@ -1,9 +1,10 @@
-class game:
+class Game(object):
     """
     A stub to change
     """
     
-
+    def __init__(self):
+        self.board = GameBoard()
 
     def play(token=None, pos=None):
         """
@@ -12,6 +13,11 @@ class game:
         print "Do you want to play a game?"
         return "OK", GameBoard()
 
+    def take_turn(self,x,y):
+        pass
+
+    def show_board(self):
+        return repr(self.board)
 
 class GameBoard():
 
@@ -28,4 +34,5 @@ class GameBoard():
     def __repr__(self):
         tmp = ''.join(self.state)
         return tmp[0:3] + "\n" + tmp[3:6] + "\n" + tmp[6:9]
+
 
