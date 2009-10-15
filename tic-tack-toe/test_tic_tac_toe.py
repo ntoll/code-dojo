@@ -5,7 +5,7 @@ see http://somethingaboutorange.com/mrl/projects/nose/
 """
 import tic_tac_toe
 
-def dummy_test():
+def blank_board_state_should_be_OK_test():
     """ 
     A first test to get things rolling...
 
@@ -45,7 +45,10 @@ def dummy_test():
     """
     ttt = tic_tac_toe.game()
     status, state = ttt.play()
-    assert state == [ '_', '_', '_', '_', '_', '_', '_', '_', '_', ]
+    assert state.OK()
+    
+
+def not_yet():
     assert status == 'OK'
     status, state = ttt.play('X', 0)
     assert state == [ 'X', '_', '_', '_', '_', '_', '_', '_', '_', ]
