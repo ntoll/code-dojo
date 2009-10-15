@@ -18,5 +18,7 @@ class GameBoard():
         self.state = [ "_" ] * 9
 
     def OK(self):
-         return True
+        return True
 
+    def set(self, x, y, mark):
+        self.state[y * 3 + x] = mark

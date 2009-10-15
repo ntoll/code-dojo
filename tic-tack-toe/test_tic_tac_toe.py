@@ -14,9 +14,17 @@ def when_game_play_starts_state_should_be_OK_test():
     assert state.OK()
 
 class TestGameBoard(object):
+
+    def setup(self):
+        self.board = tic_tac_toe.GameBoard()
+
+
     def should_return_a_blank_board_on_initialisation_test(self):
-        board = tic_tac_toe.GameBoard()
-        assert board.state == [ '_', '_', '_', '_', '_', '_', '_', '_', '_', ]
+        assert self.board.state == [ '_', '_', '_', '_', '_', '_', '_', '_', '_', ]
+
+    def set_x_on_first_position_test(self):
+        self.board.set(0, 0, 'X')
+        assert self.board.state == [ 'X', '_', '_', '_', '_', '_', '_', '_', '_', ]
     
 
 def not_yet():
