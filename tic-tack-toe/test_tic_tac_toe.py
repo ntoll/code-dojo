@@ -70,11 +70,16 @@ ___"""
         assert self.game.show_board() == board_before
 
     def test_winning(self):
-        self.game.take_turn(0,0)
-        self.game.take_turn(0,1)
-        self.game.take_turn(1,0)
-        self.game.take_turn(0,2)
-        self.game.take_turn(2,0)
+        assert self.game.get_winner() is None
+        assert self.game.take_turn(0,0)
+        assert self.game.get_winner() is None
+        assert self.game.take_turn(0,1)
+        assert self.game.get_winner() is None
+        assert self.game.take_turn(1,0)
+        assert self.game.get_winner() is None
+        assert self.game.take_turn(0,2)
+        assert self.game.get_winner() is None
+        assert self.game.take_turn(2,0)
         assert self.game.get_winner() == 'X'
         
 
