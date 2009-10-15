@@ -54,6 +54,30 @@ X__
 ___
 ___"""
 
+    def test_2_moves(self):
+        assert self.game.take_turn(0,0)
+        assert self.game.take_turn(1,1)
+        assert self.game.show_board() == """\
+X__
+_O_
+___"""
+
+
+    def test_invalid_move(self):
+        assert self.game.take_turn(0,0)
+        board_before = self.game.show_board()
+        assert not self.game.take_turn(0,0)
+        assert self.game.show_board() == board_before
+
+    def test_winning(self):
+        self.game.take_turn(0,0)
+        self.game.take_turn(0,1)
+        self.game.take_turn(1,0)
+        self.game.take_turn(0,2)
+        self.game.take_turn(2,0)
+        assert self.game.get_winner() == 'X'
+        
+
 
 
 def not_yet():

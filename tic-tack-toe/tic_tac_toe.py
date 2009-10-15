@@ -5,6 +5,7 @@ class Game(object):
     
     def __init__(self):
         self.board = GameBoard()
+        self.current_marker = "X"
 
     def play(token=None, pos=None):
         """
@@ -14,7 +15,12 @@ class Game(object):
         return "OK", GameBoard()
 
     def take_turn(self,x,y):
-        pass
+        marker = self.current_marker
+        if self.board.set(x, y, marker):
+            self.current_marker = marker == 'X' and 'O' or 'X'
+            return True
+        return False
+        
 
     def show_board(self):
         return repr(self.board)
