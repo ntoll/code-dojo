@@ -14,6 +14,9 @@ class game:
 
 class GameBoard():
 
+    def __init__(self):
+        self.state = [ "_" ] * 9
+
     def OK(self):
          return True
 
