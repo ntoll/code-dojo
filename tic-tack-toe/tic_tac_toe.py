@@ -17,8 +17,10 @@ class GameBoard():
     def __init__(self):
         self.state = [ "_" ] * 9
 
-    def OK(self):
+    def set(self, x, y, mark):
+        index = y * 3 + x
+        if self.state[index] != '_':
+            return False
+        self.state[index] = mark
         return True
 
-    def set(self, x, y, mark):
-        self.state[y * 3 + x] = mark

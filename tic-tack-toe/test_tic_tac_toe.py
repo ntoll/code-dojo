@@ -5,14 +5,6 @@ see http://somethingaboutorange.com/mrl/projects/nose/
 """
 import tic_tac_toe
 
-def when_game_play_starts_state_should_be_OK_test():
-    """ 
-
-    """
-    ttt = tic_tac_toe.game()
-    status, state = ttt.play()
-    assert state.OK()
-
 class TestGameBoard(object):
 
     def setup(self):
@@ -31,10 +23,17 @@ class TestGameBoard(object):
         assert self.board.state == [ '_', '_', '_', '_', '_', '_', '_', 'X', '_', ]
         
     def set_two_moves_test(self):
-        self.board.set(1, 0, 'X')
-        self.board.set(0, 2, 'O')
+        assert self.board.set(1, 0, 'X')
+        assert self.board.set(0, 2, 'O')
         assert self.board.state == [ '_', 'X', '_', '_', '_', '_', 'O', '_', '_', ]
-    
+
+    def attempt_illegal_move_test(self):
+        assert self.board.set(0, 0, 'X')
+        status = self.board.set(0, 0, 'O')
+        assert self.board.state == [ 'X', '_', '_', '_', '_', '_', '_', '_', '_', ]
+        assert not status
+
+
 
 def not_yet():
     assert status == 'OK'
