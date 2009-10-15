@@ -80,6 +80,7 @@ ___"""
         assert self.game.take_turn(0,2)
         assert self.game.get_winner() is None
         assert self.game.take_turn(2,0)
+        print self.game.show_board()
         assert self.game.get_winner() == 'X'
         
 

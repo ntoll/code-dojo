@@ -25,10 +25,36 @@ class Game(object):
     def show_board(self):
         return repr(self.board)
 
+    def get_winner(self):
+        winposs = [
+            ((0,0), (0,1), (0,2)),
+            ((1,0), (1,1), (1,2)),
+            ((2,0), (2,1), (2,2)),
+            ((0,0), (0,1), (0,2)),
+            ((1,0), (1,1), (1,2)),
+            ((2,0), (2,1), (2,2)),
+            ((0,0), (1,1), (2,2)),
+            ((0,2), (1,1), (2,0)),
+]
+        import pdb; pdb.set_trace()
+        board = self.board
+        for poss in winposs:
+            marks = [board.get(x,y) for x, y in poss]
+            if marks == ['X' ] * 3:
+                return 'X'
+            if marks == ['O'] * 3:
+                return 'O'
+
+
+            
 class GameBoard():
 
     def __init__(self):
         self.state = [ "_" ] * 9
+
+    def get(self, x, y):
+        index = y * 3 + x
+        return self.state[index]
 
     def set(self, x, y, mark):
         index = y * 3 + x
