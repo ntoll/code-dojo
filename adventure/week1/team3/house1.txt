@@ -1,0 +1,25 @@
+# This is how it works
+#
+# Colon at the start of the line indicates a new location definition.
+# After the colon is the name of the location.
+# The next line is a description of the location.
+# Following is zero or multiple other directions and destinations.
+# These directions are described by <direction>:<location>
+#
+
+:Garage
+You are in the garage. There are no cars here currently.
+E:Bedroom
+W:Kitchen
+
+:Kitchen
+The kitchen is immaculate. You suspect that nobody has ever actually prepared any food here.
+E:Garage
+
+:Bedroom
+You're in the lovely smelly bedroom with socks on the floor
+N:Garage
+E:Balcony
+
+:Balcony
+You have arrived in paradise!
