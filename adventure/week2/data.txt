@@ -6,11 +6,15 @@
 # Following is zero or multiple other directions and destinations.
 # These directions are described by <direction>:<location>
 #
+# A * at the beginning of a line denotes a new object.
+# The next line after the star is the location of the object
+# The 3rd line is the long description of the object
+# The line beginning A: is a list of comma separate daliases for the object
 
 :Garage
 You are in the garage. There are no cars here currently.
 E:Bedroom
-W:Kitchen
+W:Kitchen 
 
 :Kitchen
 The kitchen is immaculate. You suspect that nobody has ever actually prepared any food here.
@@ -23,3 +27,22 @@ E:Balcony
 
 :Balcony
 You have arrived in paradise!
+
+*Shovel
+Garage
+A short handled shovel. It would be very hard to dig with.
+
+*Torch
+Kitchen
+An old torch. The batteries aren't very good and it gives out a weak, yellow light.
+A:flashlight
+
+*Flowers
+Balcony
+A wilted bouquet of flowers. There is a card with a note that has been obliterated by rain or tears.
+A:bouquet, flower
+
+*Dressing Gown
+Bedroom
+A torn dressing gown with brown stains, that might be dried blood.
+A:gown
