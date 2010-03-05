@@ -1,0 +1,19 @@
+The results of a group based dojo to add objects and state to the adventure
+game.
+
+At the end of the task team 1's efforts were deemed to have advanced most so
+the group "blessed" it as the cannonical version we'd use in the next dojo.
+
+To run the game type:
+
+python adventure.py data.txt
+
+I'll also add the solutions from other teams into appropriately named
+sub-folders as and when I get the code / pull requests. So far I only have
+team 5 with their additional "monster" feature ;-)
+
+The data.txt file was created by a separate team of "creatives"
+
+You can view photos of the event here: http://divvyshot.com/event/IsJtx/
+
+Nicholas.
