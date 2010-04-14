@@ -1,15 +1,12 @@
 #!/usr/bin/python
-import re
-try:
-    from reverend.thomas import Bayes
-except ImportError:
-    Bayes = None
+
 from cmd import Cmd
 
 DIRECTIONS = 'N', 'E', 'S', 'W'
 NORTH, EAST, SOUTH, WEST = DIRECTIONS
 
-all_item_names = {}
+
+
 
 class Player(object):
     def __init__(self, location, name='Player'):
@@ -150,35 +147,67 @@ def load_universe(content):
         location = locations[item.location]
         location.items[item.name] = item
         
-        all_item_names[item.name] = item.name
-        for alias in item.aliases:
-            all_item_names[alias] = item.name
-            
-            
     return locations, first_location
 
             
-class Game(Cmd):
+VOCABULARY = { 'verb': ['walk', 'go', 'take', 'get', 'quit', 'kill'],
+                'nouns' : ['n', 'e', 'w', 's'],
+                'adverb' : ['in', 'on', 'with'],
+                }
+
+class Parser():
+
+    def __init__(self):
+        # do something with vocab
+        pass
+
+    def parse(self, phrase):
+        # we got a phrase, break it into verb, noun, etc
+        self.words = phrase.split(' ')
+        verb = self.get_verb(self.words)
+        nouns = self.get_nouns(self.words)
+        try:        
+            func = getattr(self, "do_" + verb)
+            if nouns == "":
+                func()
+            else:
+                func(nouns)
+        except:
+            print "I don't understand you, you crazy person."
+
+    def get_verb(self, phrase):
+        # find the verb
+        verb = self.words[0]
+        return(verb)	
+    
+    def get_nouns(self, phrase):
+        # find the nound
+        #words = phrase.split(' ')
+        for word in phrase:
+            if word.lower() in self.player.items.keys() + VOCABULARY['nouns']:
+                return word
+            else:
+                if len(phrase) > 1:
+                    return phrase[1]
+                return ""
+    
+    def cmdloop(self):
+        while True:
+            self.parse(raw_input("===> "))
+	
+
+class Game(Parser):
 
     def __init__(self, gamefile, player_name):
-        Cmd.__init__(self)
+        Parser.__init__(self)
         self.locations, self.start_room = load_universe(file(gamefile))
         self.player = Player(self.start_room, player_name)
-        
-        
-        self.guesser = self._load_guesser()
-        if self.guesser is not None:
-            # check that you can guess that 'grab' aliases to 'take'
-            assert self.guesser.guess('grab')
-        
         print self.player.location.describe()
-        
-    def _load_guesser(self):
-        if Bayes is None:
-            return None
-        guesser = Bayes()
-        guesser.load('commands.bays')
-        return guesser
+
+
+    def do_kill(self, monster):
+        print "You viciously attack ", monster
+        print monster, "  has eaten you. Sorry!"
 
     def do_move(self, direction):
         direction = direction.upper()
@@ -201,7 +230,7 @@ class Game(Cmd):
             # TODO validate where
             target = self.player.location.exits.get(where.upper())
             if target:
-                print target.describe()
+		print target.describe()
                 return
             item = find_item(self.player.location.items, where)
             if not item:
@@ -241,7 +270,7 @@ class Game(Cmd):
         else:
             print "You don't have", target
 
-    def do_inventory(self, target):
+    def do_icmdloopnventory(self, target):
         print self.player.inventory()
 
     def do_inv(self, target):
@@ -255,27 +284,9 @@ class Game(Cmd):
             
     def postcmd(self, stop, x):
         pass
+
     
-    def default(self, line):
-        # failed all the above, 
-        if self.guesser is not None:
-            # let's use Bayes
-            all_item_names['north'] = 'N'
-            all_item_names['east'] = 'E'
-            all_item_names['west'] = 'W'
-            all_item_names['south'] = 'S'
-            all_item_names['N'] = 'N'
-            all_item_names['E'] = 'E'
-            all_item_names['W'] = 'W'
-            all_item_names['S'] = 'S'
-            for name in all_item_names:
-                if re.search(r'\b%s\b' % re.escape(name), line, re.I):
-                    guesses = self.guesser.guess(line.replace(name,''))
-                    if guesses:
-                        method_name = guesses[0][0]
-                        getattr(self, method_name)(all_item_names[name])
-                        return
-            
+
 def play(gamefile):
     #start_room = _create_universe()
     
@@ -283,6 +294,22 @@ def play(gamefile):
     g = Game(gamefile, player_name)    
     
     g.cmdloop()
+	
+'''    while True:
+        
+
+        if not player.location.exits:
+            print "No more exits! GAME OVER!"
+            break
+
+        next_direction = raw_input('Where to next? ').upper()
+
+
+        while next_direction not in player.location.exits.keys():
+            next_direction = raw_input('Where to next? (%s) ' %\
+            ', '.join(player.location.exits.keys())).upper()
+        player.location = player.location.exits[next_direction]
+'''
 
 if __name__ == '__main__':
     import sys

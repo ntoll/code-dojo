@@ -1,0 +1,98 @@
+# This is how it works
+#
+# Colon at the start of the line indicates a new location definition.
+# After the colon is the name of the location.
+# The next line is a description of the location.
+# Following is zero or multiple other directions and destinations.
+# These directions are described by <direction>:<location>
+#
+# A * at the beginning of a line denotes a new object.
+# The next line after the star is the location of the object
+# The 3rd line is the long description of the object
+# The line beginning A: is a list of comma separate daliases for the object
+
+:Driveway
+You wake up on the driveway with a screaming headache and a sense of deja vu. As you stand up your head throbs in torturous pain. You put your hand to your head and it feels...wrong. You look at your hand and you think it is covered with blood. Bile rises and you stumble. To the north of you is an entrance to a house. Behind you is nothing but impenetrable and strangely threatening fog that you want to get away from. To the east is a garage, with a strange wet track about 2 feet across going into it.
+N:Hall
+E:Garage
+
+*House
+Driveway
+An overly-described horror film-style house which utilises far too many adjectives.
+F:You're not superman, you can't pick up a house.
+H:
+
+:Garage
+You are in a musty garage, that would be greatly improved by smelling of motor oil rather than, whatever the smell is. The smell reminds you of something. Something you've done. You can't quite remember, but a feeling of guilt floods over you as you look at the wet streak through the dust on the floor. The streak ends in the centre of the garage. Tied over one of the rafters is a rope that has been cut. It hangs over a pool of viscous ooze that is at the end of the wet streak.
+W:Driveway
+
+*Rope
+Garage
+A short length of rope with one end roughly cut that is starting to fray. It would probably support your weight if it was long enough to tie around anything.
+A:noose
+
+:Hall
+There is mud trampled into a rich Persian rug. A suit of armor has been knocked off its pedestal and has tumbled onto the floor. Grim portraits stare down at you with malevolent eyes. The streak of mud turns to the west and goes through a door. To the east, two great muddy footprints stand before a dark carved wooden door that seems to pulsate with some strange force that feels almost alive and... intelligent?
+W:Dining Room
+E:Library
+
+*Suit of Armour
+Hall
+A rusty suit of armor. It looks as if it might have actually been used.
+A:armor, armour, suit
+
+*Persian Rug
+Hall
+A fine Persian rug of exceedingly high quality, sadly ruined by mud. It breaks your heart to see such treasures maltreated like this.
+A:rug, carpet
+
+:Library
+The door to the library begrudgingly opens with a groan, as if some force or thing was attempting to keep it closed from the other side. The room is stack high with books that are mouldering from damp. Some piles crumble into a mushy pile as you walk past them. In the centre of the room stands a wooden pedestal. On top of it is a thick tome tightly bound in something that looks like leather. You feel sick to your stomach as you approach it, yet at the same time you find it attractive and feel you must have it.
+W:Hall
+
+*Necronomicon
+Library
+A leather-bound book of impressive thickness. It feels evil to the touch. You feel the urge to take it.
+A:book, tome
+
+:Dining Room
+An upturned banquet table greets you. Broken glass and china litters the dimly lit room... has there been a struggle here? Muddy footprints lead north to a doorway illuminated by a flickering light. You feel a strange presence watching you from the rafters of the ornately painted ceiling. Curiously, the banquet was without food, judging from the pieces of carnage surrounding you, and the only untouched furniture is a solitary candlestick lying in the centre of the room.
+
+*Candlestick
+Dining Room
+A bronze candle stick intricately decorated with Celtic symbology all swirly knots that appear to writhe as if alive. The candlestick hold a limp and well used white candle.
+A:candle, candelabra, stick
+
+:Kitchen
+The kitchen is strewn with blood and thick green ichor. The walls have diagonal slashes across them, as if made by a heavy knife. Surprisingly, the rest of the kitchen look intact.
+E:Cellar
+S:Dining Room
+
+:Cellar
+You're in a lovely smelly cellar.
+N:Cave
+W:Kitchen
+
+:Cave
+You have arrived in a cave! It is dark, you are likely to be eaten by a fishman.
+E:Temple Entrance
+S:Cellar
+
+:Temple Entrance
+A temple entrance.
+W:Cave
+E:Chamber
+
+:Chamber
+A chamber. Woohoo.
+N:Altar
+S:Crypt
+W:Temple Entrance
+
+:Altar
+An altar of misspelling.
+S:Chamber
+
+:Crypt
+A crypt.
+N:Chamber
