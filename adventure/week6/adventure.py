@@ -177,6 +177,8 @@ class Game(Cmd):
         if Bayes is None:
             return None
         guesser = Bayes()
+        print guesser
+        print dir(guesser)
         guesser.load('commands.bays')
         return guesser
 
@@ -271,6 +273,7 @@ class Game(Cmd):
             for name in all_item_names:
                 if re.search(r'\b%s\b' % re.escape(name), line, re.I):
                     guesses = self.guesser.guess(line.replace(name,''))
+                    print guesses
                     if guesses:
                         method_name = guesses[0][0]
                         getattr(self, method_name)(all_item_names[name])
