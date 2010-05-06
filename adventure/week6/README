@@ -1,0 +1,11 @@
+The starting state for week 6. Based upon work done in week 5.
+
+To make this work you need to run:
+
+easy_install reverend
+
+or download the source from here: 
+
+http://www.divmod.org/trac/wiki/DivmodReverend
+
+Peter will provide a 5 minute lightning talk about DivmodReverend
