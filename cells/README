@@ -1,0 +1,11 @@
+These are the agents (or minds) written by the four teams who took part in
+the July 2010 London Python Code Dojo.
+
+You'll need to grab the source code for the "cells" application from the
+following GitHub repos:
+
+http://github.com/phreeza/cells
+
+Take a read of the associated blog post here:
+
+http://phonons.wordpress.com/2010/06/01/cells-a-massively-multi-agent-python-programming-game/
